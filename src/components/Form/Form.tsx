@@ -9,7 +9,6 @@ export function Form() {
   const [state, handleSubmit] = useForm('xknkpqry')
 
   const [validEmail, setValidEmail] = useState(false)
-  const [isHuman, setIsHuman] = useState(false)
   const [message, setMessage] = useState('')
 
   function verifyEmail(email: string) {
@@ -76,15 +75,9 @@ export function Form() {
           field="message"
           errors={state.errors}
         />
-        <ReCAPTCHA
-          sitekey="6Lfj9NYfAAAAAP8wPLtzrsSZeACIcGgwuEIRvbSg"
-          onChange={(e) => {
-            setIsHuman(true)
-          }}
-        ></ReCAPTCHA>
         <button
           type="submit"
-          disabled={state.submitting || !validEmail || !message || !isHuman}
+          disabled={state.submitting || !validEmail || !message}
         >
 
           Submit
